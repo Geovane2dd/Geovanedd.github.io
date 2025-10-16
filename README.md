@@ -1,4 +1,4 @@
-# GeovaneSec Portfolio
+# Geovanedd Portfolio
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.0.3-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
@@ -18,8 +18,8 @@ Um portfólio profissional desenvolvido com Next.js, TypeScript e TailwindCSS, a
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/GeovaneSec/geovanesec.github.io.git
-cd geovanesec.github.io
+git clone https://github.com/Geovanedd/Geovanedd.github.io.git
+cd Geovanedd.github.io
 ```
 
 2. Instale as dependências:
@@ -41,7 +41,7 @@ yarn dev
 ## 📁 Estrutura do Projeto
 
 ```
-geovanesec.github.io/
+Geovanedd.github.io/
 ├── app/
 │   ├── layout.tsx       # Layout principal
 │   ├── page.tsx         # Página inicial
@@ -80,14 +80,14 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📧 Contato
 
-GeovaneSec - [GitHub](https://github.com/GeovaneSec)
+Geovanedd - [GitHub](https://github.com/Geovanedd)
 
 ## 🌐 Projetos em Destaque
 
 ### B3API
 Uma API dedicada aos dados do mercado financeiro brasileiro (B3).
 - [Demo](https://b3api.me)
-- [GitHub](https://github.com/GeovaneSec/B3API)
+- [GitHub](https://github.com/Geovanedd/B3API)
 - Tags: API, Finance, Data
 
 ### Site para a Banda Little Dolly

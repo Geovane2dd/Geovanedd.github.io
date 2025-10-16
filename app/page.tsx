@@ -10,16 +10,16 @@ const projects = [
     title: "LinkPure",
     description: "A tool that removes link tracking, focused on online shopping sites. It also removes affiliate links.",
     icon: faGithub,
-    link: "https://linkpure.g2dev.me",
-    github: "https://github.com/Geovane2Dev/LinkPure",
+    link: "https://linkpure.geovanedd.me",
+    github: "https://github.com/Geovanedd/LinkPure",
     demoEnabled: true
   },
   {
     title: "B3API",
     description: "RESTful API for querying data from the Brazilian financial market (B3).",
     icon: faServer,
-    link: "https://b3api.g2dev.me",
-    github: "https://github.com/Geovane2Dev/B3API", 
+    link: "https://b3api.geovanedd.me",
+    github: "https://github.com/Geovanedd/B3API", 
     demoEnabled: true
   },
   {
@@ -35,7 +35,7 @@ const projects = [
     description: "Discord bot developed with fun, utility, economy, and moderation commands for servers.",
     icon: faDiscord,
     link: "",
-    github: "https://github.com/Geovane2Dev/FlexTux",
+    github: "https://github.com/Geovanedd/FlexTux",
     demoEnabled: false
   }
 ];
@@ -50,14 +50,14 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-500/10 via-transparent to-transparent blur-3xl"></div>
           <div className="text-center space-y-6 sm:space-y-10 max-w-4xl mx-auto relative z-10">
             <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-500 text-transparent bg-clip-text animate-gradient tracking-tight">
-              Geovane2Dev
+              Geovanedd
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 leading-relaxed max-w-3xl mx-auto font-light px-4">
               Web developer focused on open-source and self-hosted projects.
             </p>
             <div className="flex gap-4 sm:gap-8 justify-center pt-6 sm:pt-10">
               <a 
-                href="https://github.com/Geovane2Dev" 
+                href="https://github.com/Geovanedd" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 hover:from-cyan-500/20 hover:to-blue-500/20 border border-cyan-500/20 hover:border-cyan-400 rounded-xl text-base sm:text-lg font-medium text-gray-300 hover:text-white transition-all duration-300 flex items-center group backdrop-blur-xl shadow-lg hover:shadow-cyan-500/25"

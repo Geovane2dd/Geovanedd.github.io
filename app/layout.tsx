@@ -9,12 +9,12 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Geovane2Dev - Web Developer | Open-Source Projects",
+  title: "Geovanedd - Web Developer | Open-Source Projects",
   description: "Professional portfolio of Geovane, a web developer specialized in self-hosted and open-source projects. Explore my projects and experience in secure web development.",
   keywords: "web developer, self-hosted, open-source, portfolio, programming, development, security, full-stack, frontend, backend, DevOps, cybersecurity",
-  authors: [{ name: "Geovane2Dev", url: "https://github.com/Geovane2Dev" }],
-  creator: "Geovane2Dev",
-  publisher: "Geovane2Dev",
+  authors: [{ name: "Geovanedd", url: "https://github.com/Geovanedd" }],
+  creator: "Geovanedd",
+  publisher: "Geovanedd",
   robots: {
     index: true,
     follow: true,
@@ -27,21 +27,21 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://g2dev.me',
+    canonical: 'https://geovanedd.me',
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://g2dev.me",
-    title: "Geovane2Dev - Web Developer | Self-Hosted & Open-Source Projects",
+    url: "https://geovanedd.me",
+    title: "Geovanedd - Web Developer | Self-Hosted & Open-Source Projects",
     description: "Professional portfolio of Geovane, a web developer specialized in self-hosted and open-source projects. Discover my technical skills, projects, and experience in secure web development.",
-    siteName: "Geovane2Dev Portfolio",
+    siteName: "Geovanedd Portfolio",
   },
   twitter: {
     card: "summary_large_image",
-    site: "Geovane2Dev",
-    creator: "Geovane2Dev",
-    title: "Geovane2Dev - Web Developer | Self-Hosted & Open-Source Projects",
+    site: "Geovanedd",
+    creator: "Geovanedd",
+    title: "Geovanedd - Web Developer | Self-Hosted & Open-Source Projects",
     description: "Professional portfolio of Geovane, a web developer specialized in self-hosted and open-source projects.",
   },
 };
