@@ -66,7 +66,7 @@ export default function Navbar() {
                             <span className="absolute bottom-0 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-200"></span>
                         </a>
                         <a 
-                            href="https://github.com/Geovanedd" 
+                            href="https://github.com/geovane2dd" 
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#1a1a1a] hover:bg-[#252525] border border-[#252525] hover:border-[#2a2a2a] rounded-lg transition-all duration-200"
@@ -113,7 +113,7 @@ export default function Navbar() {
                             Projects
                         </a>
                         <a 
-                            href="https://github.com/Geovanedd"
+                            href="https://github.com/geovane2dd"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-gray-400 hover:text-white hover:bg-[#1a1a1a] rounded-lg transition-all duration-200"

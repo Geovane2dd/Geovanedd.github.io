@@ -11,7 +11,7 @@ const projects = [
     description: "A tool that removes link tracking, focused on online shopping sites. It also removes affiliate links.",
     icon: faGithub,
     link: "https://linkpure.geovanedd.me",
-    github: "https://github.com/Geovanedd/LinkPure",
+    github: "https://github.com/geovane2dd/LinkPure",
     demoEnabled: true
   },
   {
@@ -19,7 +19,7 @@ const projects = [
     description: "RESTful API for querying data from the Brazilian financial market (B3).",
     icon: faServer,
     link: "",
-    github: "https://github.com/Geovanedd/B3API", 
+    github: "https://github.com/geovane2dd/B3API", 
     demoEnabled: false
   },
   {
@@ -35,7 +35,7 @@ const projects = [
     description: "Discord bot developed with fun, utility, economy, and moderation commands for servers.",
     icon: faGithub,
     link: "",
-    github: "https://github.com/Geovanedd/FlexTux",
+    github: "https://github.com/geovane2dd/FlexTux",
     demoEnabled: false
   }
 ];
@@ -94,7 +94,7 @@ export default function HomePage() {
               <nav aria-label="Social links">
                 <div className="flex gap-4 justify-center pt-4">
                   <a 
-                    href="https://github.com/Geovanedd" 
+                    href="https://github.com/geovane2dd" 
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-white text-black rounded-lg font-medium hover:bg-gray-100 transition-all duration-200 active:scale-[0.98]"

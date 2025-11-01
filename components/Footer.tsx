@@ -35,7 +35,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/Geovanedd"
+                  href="https://github.com/geovane2dd"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-gray-500 hover:text-white transition-colors duration-200 inline-flex items-center gap-2"

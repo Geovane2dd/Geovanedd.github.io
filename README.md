@@ -18,7 +18,7 @@ Um portfólio profissional desenvolvido com Next.js, TypeScript e TailwindCSS, a
 
 1. Clone o repositório:
 ```bash
-git clone https://github.com/Geovanedd/Geovanedd.github.io.git
+git clone https://github.com/geovane2dd/Geovanedd.github.io.git
 cd Geovanedd.github.io
 ```
 
@@ -80,20 +80,20 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📧 Contato
 
-GeovaneDD - [Website](https://geovanedd.me) | [GitHub](https://github.com/Geovanedd)
+GeovaneDD - [Website](https://geovanedd.me) | [GitHub](https://github.com/geovane2dd)
 
 ## 🌐 Projetos em Destaque
 
 ### B3API
 Uma API dedicada aos dados do mercado financeiro brasileiro (B3).
 - [Demo](https://b3api.geovanedd.me)
-- [GitHub](https://github.com/Geovanedd/B3API)
+- [GitHub](https://github.com/geovane2dd/B3API)
 - Tags: API, Finance, Data
 
 ### LinkPure
 Ferramenta para remover rastreamento de links, focada em sites de compras online. Também remove links de afiliados.
 - [Demo](https://linkpure.geovanedd.me)
-- [GitHub](https://github.com/Geovanedd/LinkPure)
+- [GitHub](https://github.com/geovane2dd/LinkPure)
 - Tags: Tool, Privacy, Web
 
 ### Site para a Banda Little Dolly

@@ -57,7 +57,7 @@ export const metadata: Metadata = {
   authors: [
     { 
       name: 'GeovaneDD', 
-      url: 'https://github.com/Geovanedd' 
+      url: 'https://github.com/geovane2dd' 
     }
   ],
   creator: 'GeovaneDD',
@@ -145,7 +145,7 @@ export default function RootLayout({
     url: siteUrl,
     image: `${siteUrl}/og-image.png`,
     sameAs: [
-      'https://github.com/Geovanedd'
+      'https://github.com/geovane2dd'
     ],
     jobTitle: 'Web Developer',
     worksFor: {
