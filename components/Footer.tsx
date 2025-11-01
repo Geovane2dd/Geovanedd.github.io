@@ -1,60 +1,69 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faHeart, faHome, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-[#0a0a0a]/95 to-[#111827]/95 backdrop-blur-xl text-[#e0e0e0] pt-16 pb-8 border-t border-gray-800/30 relative">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-500/5 via-transparent to-transparent"></div>
-      <div className="container mx-auto px-6 relative">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-          <div className="text-center md:text-left">
-            <a href="/" className="inline-block text-2xl font-bold transition-all duration-300">
-              <span className="tracking-wide bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-500 text-transparent bg-clip-text hover:from-cyan-400 hover:via-blue-500 hover:to-purple-600">Geovane2Dev</span>
-            </a>
-            <p className="text-gray-300 mt-6 leading-relaxed text-lg">
-              Developer passionate about technology, security, and open-source projects. Creating open-source solutions for a better digital world.
+    <footer className="bg-[#0a0a0a] text-[#e5e5e5] border-t border-[#1a1a1a]">
+      <div className="container mx-auto px-6 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">GeovaneDD</h3>
+            <p className="text-sm text-gray-500 leading-relaxed max-w-xs">
+              Web developer focused on open-source and self-hosted projects.
             </p>
-            <div className="flex items-center mt-6 space-x-3 text-sm md:justify-start justify-center group hover:bg-gradient-to-r hover:from-cyan-500/5 hover:to-blue-500/5 px-4 py-2 rounded-xl transition-all duration-300">
-              <FontAwesomeIcon icon={faHeart} className="text-red-500 animate-pulse w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-              <span className="text-gray-400 font-medium group-hover:text-cyan-400 transition-colors duration-300">Made with dedication</span>
-            </div>
           </div>
 
-          <div className="md:text-right text-center">
-            <h3 className="text-xl font-bold mb-6 bg-gradient-to-r from-cyan-300 to-blue-400 text-transparent bg-clip-text">Quick Links</h3>
-            <ul className="space-y-4">
-              <li className="flex md:justify-end justify-center">
-                <a href="/" className="text-gray-300 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-3 group px-4 py-2 rounded-xl hover:bg-cyan-500/5">
-                  <FontAwesomeIcon icon={faHome} className="w-5 h-5" />
-                  <span className="transform group-hover:translate-x-2 transition-transform duration-300 font-medium">Home</span>
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Navigation</h3>
+            <ul className="space-y-3">
+              <li>
+                <a 
+                  href="/" 
+                  className="text-sm text-gray-500 hover:text-white transition-colors duration-200 inline-block"
+                >
+                  Home
                 </a>
               </li>
-              <li className="flex md:justify-end justify-center">
-                <a href="#projects" className="text-gray-300 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-3 group px-4 py-2 rounded-xl hover:bg-cyan-500/5">
-                  <FontAwesomeIcon icon={faProjectDiagram} className="w-5 h-5" />
-                  <span className="transform group-hover:translate-x-2 transition-transform duration-300 font-medium">Projects</span>
+              <li>
+                <a 
+                  href="#projects" 
+                  className="text-sm text-gray-500 hover:text-white transition-colors duration-200 inline-block"
+                >
+                  Projects
                 </a>
               </li>
-              <li className="flex md:justify-end justify-center">
+              <li>
                 <a
-                  href="https://github.com/Geovane2Dev"
+                  href="https://github.com/Geovanedd"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-300 hover:text-cyan-400 transition-all duration-300 flex items-center space-x-3 group px-4 py-2 rounded-xl hover:bg-cyan-500/5"
+                  className="text-sm text-gray-500 hover:text-white transition-colors duration-200 inline-flex items-center gap-2"
                 >
-                  <FontAwesomeIcon icon={faGithub} className="w-5 h-5" />
-                  <span className="transform group-hover:translate-x-2 transition-transform duration-300 font-medium">GitHub</span>
+                  <FontAwesomeIcon icon={faGithub} className="w-3.5 h-3.5" />
+                  <span>GitHub</span>
                 </a>
               </li>
             </ul>
           </div>
+
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Connect</h3>
+            <a
+              href="https://github.com/Geovanedd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium bg-[#1a1a1a] hover:bg-[#252525] border border-[#252525] hover:border-[#2a2a2a] rounded-lg transition-all duration-200"
+            >
+              <FontAwesomeIcon icon={faGithub} className="w-4 h-4" />
+              <span>GitHub</span>
+            </a>
+          </div>
         </div>
 
-        <div className="text-center pt-8 border-t border-gray-800/30">
-          <p className="text-gray-400 flex items-center justify-center gap-4 text-sm font-medium">
-            <span>&copy; {new Date().getFullYear()} Geovane2Dev. All rights reserved.</span>
+        <div className="pt-8 border-t border-[#1a1a1a]">
+          <p className="text-xs text-gray-600 text-center">
+            &copy; {new Date().getFullYear()} GeovaneDD. All rights reserved.
           </p>
         </div>
       </div>

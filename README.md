@@ -1,4 +1,4 @@
-# Geovanedd Portfolio
+# GeovaneDD Portfolio
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.0.3-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
@@ -58,12 +58,12 @@ Geovanedd.github.io/
 
 ## 🌟 Funcionalidades
 
-- Design responsivo e moderno
-- Animações suaves e interativas
+- Design responsivo e minimalista
+- Interface profissional e limpa
 - Otimização SEO
-- Suporte a PWA
 - Navegação intuitiva
 - Modo escuro por padrão
+- Layout moderno e focado em conteúdo
 
 ## 🚀 Deploy
 
@@ -80,15 +80,21 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📧 Contato
 
-Geovanedd - [GitHub](https://github.com/Geovanedd)
+GeovaneDD - [Website](https://geovanedd.me) | [GitHub](https://github.com/Geovanedd)
 
 ## 🌐 Projetos em Destaque
 
 ### B3API
 Uma API dedicada aos dados do mercado financeiro brasileiro (B3).
-- [Demo](https://b3api.me)
+- [Demo](https://b3api.geovanedd.me)
 - [GitHub](https://github.com/Geovanedd/B3API)
 - Tags: API, Finance, Data
+
+### LinkPure
+Ferramenta para remover rastreamento de links, focada em sites de compras online. Também remove links de afiliados.
+- [Demo](https://linkpure.geovanedd.me)
+- [GitHub](https://github.com/Geovanedd/LinkPure)
+- Tags: Tool, Privacy, Web
 
 ### Site para a Banda Little Dolly
 Um site desenvolvido usando HTML e CSS para apresentar e divulgar a banda.

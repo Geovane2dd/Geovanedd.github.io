@@ -1,22 +1,42 @@
 {
-  "name": "Geovanedd - Web Developer | Self-Hosted and Open-Source Projects",
-  "short_name": "Geovanedd",
-  "description": "Professional portfolio of Geovane, a web developer specialized in self-hosted and open-source projects.",
+  "name": "GeovaneDD - Web Developer | Self-Hosted and Open-Source Projects",
+  "short_name": "GeovaneDD",
+  "description": "Professional portfolio of GeovaneDD, a web developer specialized in self-hosted and open-source projects. Explore open-source projects, APIs, and web development tools.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#0a0a0a",
-  "orientation": "portrait",
+  "orientation": "portrait-primary",
   "shortcuts": [
     {
       "name": "Projects",
       "url": "/#projects",
       "description": "View featured projects"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/Geovanedd",
+      "description": "Visit GitHub profile"
     }
   ],
   "lang": "en-US",
   "dir": "ltr",
-  "categories": ["portfolio", "development", "technology"],
+  "categories": ["portfolio", "development", "technology", "developer"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "prefer_related_applications": false,
   "screenshots": [],
-  "prefer_related_applications": false
+  "iarc_rating_id": ""
 }

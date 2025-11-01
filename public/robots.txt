@@ -224,28 +224,28 @@ Disallow: /
 # Allow good bots
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 10
+Crawl-delay: 1
 
 User-agent: Bingbot 
 Allow: /
-Crawl-delay: 10
+Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
-Crawl-delay: 10
+Crawl-delay: 1
 
 User-agent: DuckDuckBot
 Allow: /
-Crawl-delay: 10
+Crawl-delay: 1
 
 User-agent: YandexBot
 Allow: /
-Crawl-delay: 10
+Crawl-delay: 1
 
 # Default rules for others
 User-agent: *
 Allow: /
-Crawl-delay: 10
+Crawl-delay: 1
 
 # Site information
-Sitemap: https://g2dev.me/sitemap.xml
+Sitemap: https://geovanedd.me/sitemap.xml

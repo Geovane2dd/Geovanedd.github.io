@@ -7,36 +7,33 @@ import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#0a0a0a] via-[#111827] to-[#1a1f2e] text-gray-100">
+    <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-[#e5e5e5]">
       <Navbar />
       
-      <main className="flex-grow pt-20">
-        <section className="container mx-auto px-4 py-32 flex flex-col items-center relative">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-500/10 via-transparent to-transparent blur-3xl"></div>
-          <div className="text-center space-y-10 max-w-4xl mx-auto relative z-10">
-            <div className="flex flex-col items-center gap-6">
-              <h1 className="text-8xl md:text-9xl font-bold bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-500 text-transparent bg-clip-text animate-gradient tracking-tight">
+      <main className="flex-grow pt-16">
+        <section className="container mx-auto px-6 py-40">
+          <div className="text-center space-y-8 max-w-2xl mx-auto animate-fadeIn">
+            <div className="space-y-6">
+              <h1 className="text-7xl md:text-8xl font-semibold text-white tracking-tight">
                 404
               </h1>
+              <div className="w-16 h-px bg-[#2a2a2a] mx-auto"></div>
             </div>
-            <div className="space-y-6">
-              <p className="text-3xl md:text-4xl text-gray-200 font-semibold">
+            <div className="space-y-4">
+              <p className="text-2xl md:text-3xl text-white font-semibold">
                 Page not found
               </p>
-              <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto font-light">
+              <p className="text-base md:text-lg text-gray-500 leading-relaxed">
                 Sorry, but the page you're looking for doesn't exist or has been moved.
               </p>
             </div>
-            <div className="flex gap-8 justify-center pt-10">
+            <div className="flex justify-center pt-6">
               <Link 
                 href="/"
-                className="px-8 py-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 hover:from-cyan-500 hover:to-blue-500 border border-cyan-500/20 hover:border-cyan-400 rounded-xl text-lg font-medium text-gray-300 hover:text-white transition-all duration-300 flex items-center group backdrop-blur-xl shadow-lg hover:shadow-cyan-500/25"
+                className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-white text-black rounded-lg font-medium hover:bg-gray-100 transition-all duration-200 active:scale-[0.98]"
               >
-                <FontAwesomeIcon 
-                  icon={faHome} 
-                  className="mr-3 w-6 h-6 group-hover:scale-110 transition-all duration-300" 
-                />
-                Back to start page
+                <FontAwesomeIcon icon={faHome} className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
+                <span>Back to home</span>
               </Link>
             </div>
           </div>
