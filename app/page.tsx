@@ -40,6 +40,10 @@ const projects = [
   }
 ];
 
+// Force static generation for better SEO and initial load
+export const dynamic = 'force-static';
+export const revalidate = 3600;
+
 export default function HomePage() {
   // Structured Data for Projects
   const projectsJsonLd = {
@@ -81,7 +85,7 @@ export default function HomePage() {
             className="container mx-auto px-6 py-32 sm:py-40"
             aria-label="Introduction"
           >
-            <div className="max-w-4xl mx-auto text-center space-y-8 animate-fadeIn">
+            <div className="max-w-4xl mx-auto text-center space-y-8">
               <div className="space-y-6">
                 <h1 className="text-6xl sm:text-7xl md:text-8xl font-semibold text-white tracking-tight leading-none">
                   GeovaneDD
@@ -134,8 +138,7 @@ export default function HomePage() {
                 {projects.map((project, index) => (
                   <article 
                     key={index} 
-                    className="group relative bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-8 hover:border-[#2a2a2a] hover:bg-[#121212] transition-all duration-300 animate-fadeIn"
-                    style={{ animationDelay: `${index * 0.1}s` }}
+                    className="group relative bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-8 hover:border-[#2a2a2a] hover:bg-[#121212] transition-all duration-300"
                     role="listitem"
                   >
                     {/* Top Bar */}

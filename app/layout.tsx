@@ -119,7 +119,6 @@ export const metadata: Metadata = {
     images: [`${siteUrl}/og-image.png`],
   },
   verification: {
-    // Adicione suas verificações quando disponíveis
     // google: 'your-google-verification-code',
     // yandex: 'your-yandex-verification-code',
     // yahoo: 'your-yahoo-verification-code',
@@ -132,6 +131,10 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-title': siteName,
   },
 };
+
+// Ensure static generation for SEO
+export const dynamic = 'force-static';
+export const revalidate = 3600;
 
 export default function RootLayout({
   children,
@@ -222,7 +225,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioJsonLd) }}
         />
       </head>
-      <body className={`${firaCode.className} bg-[#0a0a0a] text-[#e5e5e5] min-h-screen flex flex-col antialiased`}>
+      <body className={`${firaCode.className} bg-[#0a0a0a] text-[#e5e5e5] min-h-screen flex flex-col antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>
