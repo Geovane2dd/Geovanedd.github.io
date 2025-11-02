@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export default function robots(): MetadataRoute.Robots {
   const baseUrl = 'https://geovanedd.me';

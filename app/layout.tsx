@@ -90,7 +90,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-    // Note: Bingbot configuration is handled in app/robots.ts
   },
   alternates: {
     canonical: siteUrl,
@@ -146,7 +145,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Ensure static generation for SEO
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
@@ -155,77 +153,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'GeovaneDD',
-    url: siteUrl,
-    image: `${siteUrl}/og-image.png`,
-    sameAs: [
-      'https://github.com/geovane2dd'
-    ],
-    jobTitle: 'Web Developer',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Freelance',
-    },
-    description: defaultDescription,
-    knowsAbout: [
-      'Web Development',
-      'Open Source',
-      'Self-Hosted Solutions',
-      'TypeScript',
-      'React',
-      'Next.js',
-      'API Development',
-      'Security'
-    ],
-  };
-
-  const websiteJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: siteName,
-    url: siteUrl,
-    description: defaultDescription,
-    publisher: {
-      '@type': 'Person',
-      name: 'GeovaneDD',
-    },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${siteUrl}/?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
-  };
-
-  const portfolioJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'CreativeWork',
-    '@id': `${siteUrl}/#portfolio`,
-    name: `${siteName} Portfolio`,
-    description: 'Collection of open-source and self-hosted projects by GeovaneDD',
-    creator: {
-      '@type': 'Person',
-      name: 'GeovaneDD',
-    },
-  };
-
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Home',
-        item: siteUrl,
-      },
-    ],
-  };
 
   return (
     <html lang="en" dir="ltr">
@@ -233,30 +160,20 @@ export default function RootLayout({
         <meta charSet="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="google" content="notranslate" />
+        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+        <meta httpEquiv="X-Frame-Options" content="DENY" />
+        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
+        <meta httpEquiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="canonical" href={siteUrl} />
-        
-        {/* Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-        />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} bg-[#0a0a0a] text-[#e5e5e5] min-h-screen flex flex-col antialiased`} suppressHydrationWarning>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} bg-[#0a0a0a] text-[#e5e5e5] min-h-screen flex flex-col antialiased`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

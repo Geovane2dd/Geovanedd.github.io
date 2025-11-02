@@ -6,13 +6,11 @@ const nextConfig: NextConfig = {
   generateEtags: true,
   reactStrictMode: true,
   
-  // SEO & Performance optimizations
   images: {
     formats: ['image/avif', 'image/webp'],
     minimumCacheTTL: 60,
   },
-  
-  // Headers for security and SEO
+
   async headers() {
     return [
       {

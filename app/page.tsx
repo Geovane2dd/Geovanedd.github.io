@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -40,47 +39,17 @@ const projects = [
   }
 ];
 
-// Force static generation for better SEO and initial load
 export const dynamic = 'force-static';
 export const revalidate = 3600;
 
 export default function HomePage() {
-  // Structured Data for Projects
-  const projectsJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Featured Projects',
-    description: 'Collection of open-source and self-hosted projects',
-    itemListElement: projects.map((project, index) => ({
-      '@type': 'SoftwareApplication',
-      position: index + 1,
-      name: project.title,
-      description: project.description,
-      url: project.demoEnabled ? project.link : project.github,
-      applicationCategory: 'WebApplication',
-      operatingSystem: 'Web',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD'
-      },
-      codeRepository: project.github,
-    })),
-  };
 
   return (
     <>
-      {/* Structured Data for Projects */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(projectsJsonLd) }}
-      />
-      
       <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-[#e5e5e5]">
         <Navbar />
         
         <main className="flex-grow pt-16">
-          {/* Hero Section */}
           <section 
             className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32"
             aria-label="Introduction"
@@ -113,14 +82,12 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Divider */}
           <div className="container mx-auto px-4 sm:px-6" aria-hidden="true">
             <div className="max-w-6xl mx-auto">
               <div className="w-full h-px bg-gradient-to-r from-transparent via-[#1a1a1a] to-transparent"></div>
             </div>
           </div>
 
-          {/* Projects Section */}
           <section 
             className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32" 
             id="projects"
@@ -147,7 +114,6 @@ export default function HomePage() {
                     className="group relative bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-5 sm:p-6 md:p-8 hover:border-[#2a2a2a] hover:bg-[#121212] transition-all duration-300"
                     role="listitem"
                   >
-                    {/* Top Bar */}
                     <div className="flex items-start justify-between mb-4 sm:mb-6">
                       <div className="text-gray-500 text-xl sm:text-2xl group-hover:text-gray-400 transition-colors duration-300" aria-hidden="true">
                         <FontAwesomeIcon icon={project.icon} className="text-[20px] sm:text-[24px]" style={{width: '1em', height: '1em'}} />
@@ -182,7 +148,6 @@ export default function HomePage() {
                       </nav>
                     </div>
 
-                    {/* Content */}
                     <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                       <h3 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-gray-100 transition-colors duration-200">
                         <a 
@@ -200,7 +165,6 @@ export default function HomePage() {
                       </p>
                     </div>
 
-                    {/* Actions */}
                     <footer className="flex gap-3 pt-4 border-t border-[#1a1a1a]">
                       {project.demoEnabled && (
                         <a 
@@ -233,14 +197,11 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Divider */}
           <div className="container mx-auto px-4 sm:px-6" aria-hidden="true">
             <div className="max-w-6xl mx-auto">
               <div className="w-full h-px bg-gradient-to-r from-transparent via-[#1a1a1a] to-transparent"></div>
             </div>
           </div>
-
-          {/* About Section */}
           <section 
             id="about"
             className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32" 
