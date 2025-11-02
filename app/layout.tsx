@@ -1,18 +1,31 @@
 import type { Metadata, Viewport } from "next";
-import { Fira_Code } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
-const firaCode = Fira_Code({ 
-  subsets: ["latin"],
-  display: 'swap',
-  adjustFontFallback: true,
-  preload: true
+config.autoAddCss = false;
+
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
+  display: "block",
+  preload: true,
+});
+
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
+  display: "block",
+  preload: true,
 });
 
 const siteUrl = 'https://geovanedd.me';
 const siteName = 'GeovaneDD';
-const defaultTitle = 'GeovaneDD - Web Developer | Open-Source Projects';
-const defaultDescription = 'Professional portfolio of GeovaneDD, a web developer specialized in self-hosted and open-source projects. Explore my projects, technical skills, and experience in secure web development.';
+const defaultTitle = 'GeovaneDD - Web Developer Portfolio | Open-Source & Self-Hosted Solutions';
+const defaultDescription = 'Professional portfolio showcasing open-source projects and self-hosted solutions by GeovaneDD. Discover web development projects built with TypeScript, React, Next.js, and modern technologies. Explore tools for privacy, security, and efficient web experiences.';
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -201,6 +214,19 @@ export default function RootLayout({
     },
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: siteUrl,
+      },
+    ],
+  };
+
   return (
     <html lang="en" dir="ltr">
       <head>
@@ -225,8 +251,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(portfolioJsonLd) }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
       </head>
-      <body className={`${firaCode.className} bg-[#0a0a0a] text-[#e5e5e5] min-h-screen flex flex-col antialiased`} suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-[#0a0a0a] text-[#e5e5e5] min-h-screen flex flex-col antialiased`} suppressHydrationWarning>
         {children}
       </body>
     </html>
