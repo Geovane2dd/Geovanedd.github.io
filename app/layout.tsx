@@ -77,6 +77,7 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+    // Note: Bingbot configuration is handled in app/robots.ts
   },
   alternates: {
     canonical: siteUrl,
