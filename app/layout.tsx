@@ -1,27 +1,16 @@
 /*
- * LinkPure - A modern tool to clean tracking parameters from links
- * Copyright (C) 2024 GeovaneDD
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * Geovanedd Portfolio
+ * Copyright (C) 2024 Geovanedd
+ * Licensed under GNU GPL v3
  */
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-
 config.autoAddCss = false;
+
+// ─── LAYOUT & METADATA ────────────────────────────────────────────────────────
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,7 +19,6 @@ const geistSans = localFont({
   display: "block",
   preload: true,
 });
-
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
@@ -39,158 +27,80 @@ const geistMono = localFont({
   preload: true,
 });
 
-const siteUrl = 'https://geovanedd.me';
+const siteUrl  = 'https://geovanedd.me';
 const siteName = 'GeovaneDD';
-const defaultTitle = 'GeovaneDD - Web Developer Portfolio | Open-Source & Self-Hosted Solutions';
-const defaultDescription = 'Professional portfolio showcasing open-source projects and self-hosted solutions by GeovaneDD. Discover web development projects built with TypeScript, React, Next.js, and modern technologies. Explore tools for privacy, security, and efficient web experiences.';
+const defaultTitle       = 'Geovanedd — Developer · Open-Source · Privacy-First';
+const defaultDescription = 'Geovanedd is a web developer crafting open-source tools and self-hosted applications with TypeScript, React and Next.js. Explore projects built for privacy, security and performance.';
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#0a0a0a' },
-    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' }
-  ],
+  themeColor: [{ color: '#080810' }],
   colorScheme: 'dark',
 };
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: defaultTitle,
-    template: `%s | ${siteName}`
-  },
+  title:       { default: defaultTitle, template: `%s · ${siteName}` },
   description: defaultDescription,
   keywords: [
-    'web developer',
-    'frontend developer',
-    'backend developer',
-    'full stack developer',
-    'self-hosted',
-    'open-source',
-    'portfolio',
-    'programming',
-    'software development',
-    'web development',
-    'security',
-    'DevOps',
-    'cybersecurity',
-    'TypeScript',
-    'React',
-    'Next.js',
-    'Node.js',
-    'API development',
-    'Brazil',
-    'Brasil'
+    'full-stack developer','web developer','open-source','self-hosted',
+    'TypeScript','React','Next.js','Node.js','privacy','API','portfolio','Brazil',
   ],
-  authors: [
-    { 
-      name: 'GeovaneDD', 
-      url: 'https://github.com/geovane2dd' 
-    }
-  ],
-  creator: 'GeovaneDD',
-  publisher: 'GeovaneDD',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  alternates: {
-    canonical: siteUrl,
-    languages: {
-      'en-US': siteUrl,
-      'pt-BR': siteUrl,
-    },
-  },
+  authors:   [{ name: 'Geovanedd', url: 'https://github.com/geovane2dd' }],
+  creator:   'Geovanedd',
+  publisher: 'Geovanedd',
+  robots:    { index: true, follow: true, googleBot: { index: true, follow: true, 'max-snippet': -1 } },
+  alternates:{ canonical: siteUrl },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    alternateLocale: ['pt_BR'],
-    url: siteUrl,
+    type: 'website', locale: 'en_US', url: siteUrl,
     siteName: `${siteName} Portfolio`,
-    title: defaultTitle,
-    description: defaultDescription,
-    images: [
-      {
-        url: `${siteUrl}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: `${siteName} - Web Developer Portfolio`,
-        type: 'image/png',
-      },
-      {
-        url: `${siteUrl}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: `${siteName} - Web Developer Portfolio`,
-        type: 'image/jpeg',
-      }
-    ],
+    title: defaultTitle, description: defaultDescription,
+    images: [{ url: `${siteUrl}/og-image.png`, width: 1200, height: 630, alt: `${siteName} — Developer Portfolio` }],
   },
   twitter: {
-    card: 'summary_large_image',
-    site: '@Geovanedd',
-    creator: '@Geovanedd',
-    title: defaultTitle,
-    description: defaultDescription,
+    card: 'summary_large_image', site: '@Geovanedd', creator: '@Geovanedd',
+    title: defaultTitle, description: defaultDescription,
     images: [`${siteUrl}/og-image.png`],
   },
-  verification: {
-    // google: 'your-google-verification-code',
-    // yandex: 'your-yandex-verification-code',
-    // yahoo: 'your-yahoo-verification-code',
-  },
-  category: 'Portfolio',
-  classification: 'Portfolio Website',
   other: {
-    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable':          'yes',
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
-    'apple-mobile-web-app-title': siteName,
+    'apple-mobile-web-app-title':            siteName,
   },
 };
 
-export const dynamic = 'force-static';
+export const dynamic   = 'force-static';
 export const revalidate = 3600;
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" dir="ltr">
       <head>
         <meta charSet="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="google" content="notranslate" />
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta httpEquiv="X-Frame-Options" content="DENY" />
-        <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
-        <meta name="referrer" content="strict-origin-when-cross-origin" />
-        <meta httpEquiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <meta httpEquiv="X-Frame-Options"        content="DENY" />
+        <meta httpEquiv="X-XSS-Protection"       content="1; mode=block" />
+        <meta name="referrer"                    content="strict-origin-when-cross-origin" />
+        <link rel="icon"            href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="canonical" href={siteUrl} />
+        <link rel="manifest"        href="/manifest.json" />
+        <link rel="canonical"       href={siteUrl} />
+        {/* Structured Data */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Geovanedd",
+          "url": siteUrl,
+          "sameAs": ["https://github.com/geovane2dd"],
+          "jobTitle": "Full-Stack Web Developer",
+          "knowsAbout": ["TypeScript","React","Next.js","Node.js","Open-Source","Privacy"],
+          "description": defaultDescription,
+        })}} />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-[#0a0a0a] text-[#e5e5e5] min-h-screen flex flex-col antialiased`}
-        suppressHydrationWarning
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-[#080810] text-[#e2e2f0] min-h-screen antialiased`}
+        suppressHydrationWarning>
         {children}
       </body>
     </html>

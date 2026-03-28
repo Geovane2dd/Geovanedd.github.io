@@ -1,206 +1,197 @@
 /*
- * LinkPure - A modern tool to clean tracking parameters from links
- * Copyright (C) 2024 GeovaneDD
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * GeovaneDD Portfolio · GNU GPL v3
  */
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 export default function Navbar() {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const menuRef = useRef<HTMLDivElement>(null);
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    const navRef = useRef<HTMLElement>(null);
+  const [open,     setOpen]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const btnRef  = useRef<HTMLButtonElement>(null);
 
-    useEffect(() => {
-        if (isMobileMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+  /* scroll shadow */
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, [isMobileMenuOpen]);
+  /* lock body scroll */
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
 
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-            const target = event.target as Node;
-            if (
-                menuRef.current && 
-                buttonRef.current &&
-                navRef.current &&
-                !menuRef.current.contains(target) &&
-                !buttonRef.current.contains(target) &&
-                !navRef.current.contains(target)
-            ) {
-                setIsMobileMenuOpen(false);
-            }
-        };
-
-        if (isMobileMenuOpen) {
-            document.addEventListener('mousedown', handleClickOutside);
-            document.addEventListener('touchstart', handleClickOutside);
-        }
-        
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-            document.removeEventListener('touchstart', handleClickOutside);
-        };
-    }, [isMobileMenuOpen]);
-
-    useEffect(() => {
-        const handleEscape = (event: KeyboardEvent) => {
-            if (event.key === 'Escape' && isMobileMenuOpen) {
-                setIsMobileMenuOpen(false);
-            }
-        };
-
-        document.addEventListener('keydown', handleEscape);
-        
-        return () => {
-            document.removeEventListener('keydown', handleEscape);
-        };
-    }, [isMobileMenuOpen]);
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth >= 768 && isMobileMenuOpen) {
-                setIsMobileMenuOpen(false);
-            }
-        };
-
-        window.addEventListener('resize', handleResize);
-        
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, [isMobileMenuOpen]);
-
-    const toggleMenu = () => {
-        setIsMobileMenuOpen(!isMobileMenuOpen);
+  /* click outside */
+  useEffect(() => {
+    const handler = (e: MouseEvent | TouchEvent) => {
+      const t = e.target as Node;
+      if (menuRef.current && btnRef.current &&
+          !menuRef.current.contains(t) && !btnRef.current.contains(t)) {
+        setOpen(false);
+      }
     };
-
-    const closeMenu = () => {
-        setIsMobileMenuOpen(false);
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    if (open) {
+      document.addEventListener("mousedown",  handler);
+      document.addEventListener("touchstart", handler);
+      document.addEventListener("keydown",    esc);
+    }
+    return () => {
+      document.removeEventListener("mousedown",  handler);
+      document.removeEventListener("touchstart", handler);
+      document.removeEventListener("keydown",    esc);
     };
+  }, [open]);
 
-    return (
-        <>
-            <nav 
-                ref={navRef}
-                className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-[#1a1a1a]"
-                aria-label="Main navigation"
+  /* close on desktop resize */
+  useEffect(() => {
+    const onResize = () => { if (window.innerWidth >= 768) setOpen(false); };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  return (
+    <>
+      {/* ── Nav bar ─────────────────────────────────────────── */}
+      <nav
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500
+          ${scrolled
+            ? "bg-[#080810]/90 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_1px_0_0_rgba(255,255,255,0.04)]"
+            : "bg-transparent"}`}
+        aria-label="Main navigation"
+      >
+        <div className="max-w-7xl mx-auto px-5 sm:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
+
+            {/* Logo */}
+            <Link
+              href="/"
+              className="group flex items-center gap-2.5"
+              onClick={() => setOpen(false)}
+              aria-label="Geovanedd — home"
             >
-                <div className="container mx-auto px-4 sm:px-6">
-                    <div className="flex justify-between items-center h-16 sm:h-20">
-                        <Link 
-                            href="/" 
-                            className="text-lg sm:text-xl font-semibold text-white transition-opacity duration-200 hover:opacity-80 active:opacity-70 touch-manipulation"
-                            onClick={closeMenu}
-                        >
-                            GeovaneDD
-                        </Link>
+              <span className="flex items-center justify-center w-8 h-8 rounded-lg
+                bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white text-xs font-bold
+                shadow-lg shadow-violet-500/25 select-none">
+                G
+              </span>
+              <span className="text-sm font-semibold text-white/85 tracking-wide
+                group-hover:text-white transition-colors duration-200">
+                Geovanedd
+              </span>
+            </Link>
 
-                        <div className="hidden md:flex items-center space-x-3 lg:space-x-4">
-                            <a 
-                                href="#projects" 
-                                className="text-sm text-gray-400 hover:text-white transition-colors duration-200 font-medium relative group"
-                                aria-label="View featured projects section"
-                            >
-                                Projects
-                                <span className="absolute bottom-0 left-0 w-0 h-px bg-white group-hover:w-full transition-all duration-200"></span>
-                            </a>
-                            <a 
-                                href="https://github.com/geovane2dd" 
-                                target="_blank"
-                                rel="noopener noreferrer nofollow"
-                                className="flex items-center gap-2 px-4 py-2 text-sm font-medium bg-[#1a1a1a] hover:bg-[#252525] border border-[#252525] hover:border-[#2a2a2a] rounded-lg transition-all duration-200 active:scale-[0.98] touch-manipulation"
-                                style={{minHeight: '40px'}}
-                                aria-label="Visit GitHub profile to view open-source projects"
-                            >
-                                <FontAwesomeIcon icon={faGithub} className="text-base" style={{width: '1em', height: '1em'}} />
-                                <span className="hidden lg:inline">GitHub</span>
-                                <span className="lg:hidden">Git</span>
-                            </a>
-                        </div>
+            {/* Desktop links */}
+            <div className="hidden md:flex items-center gap-1">
+              {["Projects", "About"].map(label => (
+                <a
+                  key={label}
+                  href={`#${label.toLowerCase()}`}
+                  className="px-4 py-2 text-sm text-white/45 hover:text-white
+                    rounded-lg hover:bg-white/[0.05] transition-all duration-200 font-medium"
+                  aria-label={`Go to ${label} section`}
+                >
+                  {label}
+                </a>
+              ))}
 
-                        <button 
-                            ref={buttonRef}
-                            onClick={toggleMenu}
-                            className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-[#1a1a1a] hover:bg-[#252525] active:bg-[#1a1a1a] border border-[#252525] transition-all duration-200 touch-manipulation"
-                            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-                            aria-expanded={isMobileMenuOpen}
-                            style={{minWidth: '44px', minHeight: '44px'}}
-                        >
-                            <FontAwesomeIcon 
-                                icon={isMobileMenuOpen ? faTimes : faBars}
-                                className="text-lg text-gray-300 transition-transform duration-200"
-                                style={{width: '1em', height: '1em'}}
-                            />
-                        </button>
-                    </div>
-                </div>
-            </nav>
+              <div className="w-px h-4 bg-white/10 mx-2" aria-hidden="true" />
 
-            {isMobileMenuOpen && (
-                <div 
-                    className="fixed inset-0 bg-[#0a0a0a]/80 backdrop-blur-sm z-40 md:hidden"
-                    onClick={closeMenu}
-                    aria-hidden="true"
-                />
-            )}
-
-            <div 
-                ref={menuRef}
-                className={`md:hidden fixed top-16 sm:top-20 left-0 right-0 z-50 bg-[#0a0a0a] border-b border-[#1a1a1a] shadow-2xl transition-all duration-300 ease-out ${
-                    isMobileMenuOpen 
-                        ? "opacity-100 translate-y-0 visible" 
-                        : "opacity-0 -translate-y-4 invisible"
-                }`}
-                role="dialog"
-                aria-modal="true"
-                aria-label="Mobile navigation menu"
-            >
-                <div className="container mx-auto px-4 sm:px-6 py-4 space-y-1">
-                    <a 
-                        href="#projects"
-                        className="flex items-center gap-3 px-4 py-3.5 text-base font-medium text-gray-300 hover:text-white hover:bg-[#1a1a1a] active:bg-[#252525] rounded-lg transition-all duration-200 touch-manipulation border border-transparent hover:border-[#252525]"
-                        onClick={closeMenu}
-                        style={{minHeight: '48px'}}
-                    >
-                        <span>Projects</span>
-                    </a>
-                    <a 
-                        href="https://github.com/geovane2dd"
-                        target="_blank"
-                        rel="noopener noreferrer nofollow"
-                        className="flex items-center gap-3 px-4 py-3.5 text-base font-medium text-gray-300 hover:text-white hover:bg-[#1a1a1a] active:bg-[#252525] rounded-lg transition-all duration-200 touch-manipulation border border-transparent hover:border-[#252525]"
-                        onClick={closeMenu}
-                        style={{minHeight: '48px'}}
-                    >
-                        <FontAwesomeIcon icon={faGithub} className="text-lg" style={{width: '1em', height: '1em'}} />
-                        <span>GitHub</span>
-                    </a>
-                </div>
+              <a
+                href="https://github.com/geovane2dd"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="flex items-center gap-2 px-4 py-2 text-sm font-medium
+                  bg-white/[0.06] hover:bg-white/[0.10]
+                  border border-white/[0.08] hover:border-white/[0.18]
+                  rounded-lg transition-all duration-200 active:scale-[0.97]"
+                style={{ minHeight: "40px" }}
+                aria-label="Visit GitHub profile"
+              >
+                <FontAwesomeIcon icon={faGithub} className="w-[1em] h-[1em]" />
+                <span className="hidden lg:inline">GitHub</span>
+                <span className="lg:hidden">Git</span>
+              </a>
             </div>
-        </>
-    );
+
+            {/* Mobile burger */}
+            <button
+              ref={btnRef}
+              onClick={() => setOpen(v => !v)}
+              className="md:hidden flex items-center justify-center rounded-lg
+                bg-white/[0.06] hover:bg-white/[0.10]
+                border border-white/[0.08] transition-all duration-200
+                touch-manipulation"
+              style={{ minWidth: "44px", minHeight: "44px" }}
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
+            >
+              <FontAwesomeIcon
+                icon={open ? faTimes : faBars}
+                className="text-white/65 w-[1em] h-[1em] transition-transform duration-200"
+              />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* ── Mobile backdrop ─────────────────────────────────── */}
+      {open && (
+        <div
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+          onClick={() => setOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* ── Mobile drawer ───────────────────────────────────── */}
+      <div
+        ref={menuRef}
+        className={`fixed top-16 sm:top-20 inset-x-0 z-50 md:hidden
+          bg-[#0b0b18]/98 backdrop-blur-2xl border-b border-white/[0.06] shadow-2xl
+          transition-all duration-300 ease-out
+          ${open
+            ? "opacity-100 translate-y-0 pointer-events-auto visible"
+            : "opacity-0 -translate-y-3 pointer-events-none invisible"}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation menu"
+      >
+        <div className="max-w-7xl mx-auto px-5 py-4 space-y-1">
+          {["Projects", "About"].map(label => (
+            <a
+              key={label}
+              href={`#${label.toLowerCase()}`}
+              className="flex items-center gap-3 px-4 py-3.5 text-sm font-medium
+                text-white/65 hover:text-white hover:bg-white/[0.06]
+                rounded-xl transition-all duration-200 touch-manipulation"
+              style={{ minHeight: "48px" }}
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </a>
+          ))}
+          <a
+            href="https://github.com/geovane2dd"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="flex items-center gap-3 px-4 py-3.5 text-sm font-medium
+              text-white/65 hover:text-white hover:bg-white/[0.06]
+              rounded-xl transition-all duration-200 touch-manipulation"
+            style={{ minHeight: "48px" }}
+            onClick={() => setOpen(false)}
+          >
+            <FontAwesomeIcon icon={faGithub} className="w-[1em] h-[1em]" />
+            GitHub
+          </a>
+        </div>
+      </div>
+    </>
+  );
 }

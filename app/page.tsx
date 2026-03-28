@@ -1,273 +1,467 @@
 /*
- * LinkPure - A modern tool to clean tracking parameters from links
- * Copyright (C) 2024 GeovaneDD
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * GeovaneDD Portfolio · GNU GPL v3
+ * Server Component — export const dynamic/revalidate são válidos aqui.
  */
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faExternalLinkAlt, faServer, faMusic } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faExternalLinkAlt,
+  faServer,
+  faMusic,
+  faArrowRight,
+  faCode,
+} from "@fortawesome/free-solid-svg-icons";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
+export const dynamic    = "force-static";
+export const revalidate = 3600;
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
 
 const projects = [
   {
-    title: "LinkPure",
-    description: "A tool that removes link tracking, focused on online shopping sites. It also removes affiliate links.",
-    icon: faGithub,
-    link: "https://linkpure.geovanedd.me",
+    id:      "linkpure",
+    title:   "LinkPure",
+    tagline: "URL Sanitizer",
+    description:
+      "Strips tracking parameters and affiliate tokens from shopping URLs. Open-source, privacy-first, zero client-side dependencies.",
+    stack:  ["TypeScript", "Next.js", "Regex Engine"],
+    icon:   faCode,
+    link:   "https://linkpure.geovanedd.com",
     github: "https://github.com/geovane2dd/LinkPure",
-    demoEnabled: true
+    demo:   true,
+    dot:    "bg-violet-400",
+    glow:   "hover:shadow-violet-950/60",
   },
   {
-    title: "B3API",
-    description: "RESTful API for querying data from the Brazilian financial market (B3).",
-    icon: faServer,
-    link: "",
-    github: "https://github.com/geovane2dd/B3API", 
-    demoEnabled: false
+    id:      "b3api",
+    title:   "B3 API",
+    tagline: "Financial Data API",
+    description:
+      "RESTful API exposing real-time and historical data from Brazil's stock exchange (B3) for developers and financial applications.",
+    stack:  ["Node.js", "REST", "Finance"],
+    icon:   faServer,
+    link:   "",
+    github: "https://github.com/geovane2dd/B3API",
+    demo:   false,
+    dot:    "bg-cyan-400",
+    glow:   "hover:shadow-cyan-950/60",
   },
   {
-    title: "Little Dolly Website",
-    description: "Modern website developed for the band Little Dolly, with a custom design and optimized for music content promotion.",
-    icon: faMusic,
-    link: "",
+    id:      "little-dolly",
+    title:   "Little Dolly",
+    tagline: "Artist Website",
+    description:
+      "Modern, performance-optimised website for the band Little Dolly. Custom design built for immersive music-content promotion.",
+    stack:  ["React", "Tailwind", "Web Design"],
+    icon:   faMusic,
+    link:   "",
     github: "https://github.com/bandalittledolly/Website",
-    demoEnabled: false
+    demo:   false,
+    dot:    "bg-rose-400",
+    glow:   "hover:shadow-rose-950/60",
   },
   {
-    title: "FlexTux Bot",
-    description: "Discord bot developed with fun, utility, economy, and moderation commands for servers.",
-    icon: faGithub,
-    link: "",
+    id:      "flextux",
+    title:   "FlexTux Bot",
+    tagline: "Discord Bot",
+    description:
+      "Feature-rich Discord bot with economy, moderation, utility and fun modules. Built for high-traffic servers.",
+    stack:  ["Node.js", "Discord.js", "CLI"],
+    icon:   faGithub,
+    link:   "",
     github: "https://github.com/geovane2dd/FlexTux",
-    demoEnabled: false
-  }
+    demo:   false,
+    dot:    "bg-emerald-400",
+    glow:   "hover:shadow-emerald-950/60",
+  },
 ];
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
+const techGrid = [
+  { label: "TypeScript",   sub: "Primary language" },
+  { label: "React / Next", sub: "Frontend & SSR"   },
+  { label: "Node.js",      sub: "Backend & APIs"   },
+  { label: "Open-Source",  sub: "Everything public"},
+  { label: "Self-Hosted",  sub: "Privacy-first"    },
+  { label: "Tailwind CSS", sub: "UI styling"       },
+];
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
-
   return (
-    <>
-      <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-[#e5e5e5]">
-        <Navbar />
-        
-        <main className="flex-grow pt-16">
-          <section 
-            className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32"
-            aria-label="Introduction"
-          >
-            <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-12">
-              <header className="space-y-4 sm:space-y-6">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold text-white tracking-tight leading-none px-2">
-                  GeovaneDD
-                </h1>
-                <div className="w-12 sm:w-16 h-px bg-[#2a2a2a] mx-auto" aria-hidden="true"></div>
-                <p className="text-base sm:text-lg md:text-xl text-gray-400 leading-relaxed font-light max-w-2xl mx-auto px-4">
-                  Web developer specialized in creating <span className="text-white font-medium">open-source solutions</span> and <span className="text-white font-medium">self-hosted applications</span>. Building secure, efficient, and user-friendly web experiences with modern technologies.
-                </p>
-              </header>
-              <nav aria-label="Social links">
-                <div className="flex gap-4 justify-center pt-4 px-2">
-                  <a 
-                    href="https://github.com/geovane2dd" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-white text-black rounded-lg font-medium hover:bg-gray-100 transition-all duration-200 active:scale-[0.98] touch-manipulation"
-                    style={{minHeight: '44px'}}
-                    aria-label="Visit GeovaneDD GitHub profile to view open-source projects"
-                  >
-                    <FontAwesomeIcon icon={faGithub} className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" style={{width: '1em', height: '1em'}} aria-hidden="true" />
-                    <span>View GitHub Profile</span>
-                  </a>
-                </div>
-              </nav>
-            </div>
-          </section>
+    <div
+      className="min-h-screen flex flex-col bg-[#07070f]"
+      itemScope
+      itemType="https://schema.org/WebPage"
+    >
+      <Navbar />
+      <main className="flex-grow" itemProp="mainContentOfPage">
 
-          <div className="container mx-auto px-4 sm:px-6" aria-hidden="true">
-            <div className="max-w-6xl mx-auto">
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-[#1a1a1a] to-transparent"></div>
+        {/* ═══════════════════════ HERO ════════════════════════ */}
+        <section
+          className="relative min-h-screen flex items-center overflow-hidden"
+          aria-label="Geovanedd — Developer Portfolio"
+        >
+          {/* Atmosphere */}
+          <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+            <div className="absolute top-[-20%] left-[10%] w-[70vw] h-[70vw] max-w-[800px] max-h-[800px]
+              rounded-full opacity-[0.07]
+              bg-[radial-gradient(ellipse,#7c3aed,transparent_65%)]" />
+            <div className="absolute bottom-[5%] right-[-10%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px]
+              rounded-full opacity-[0.05]
+              bg-[radial-gradient(ellipse,#0ea5e9,transparent_65%)]" />
+            <div
+              className="absolute inset-0 opacity-[0.018]"
+              style={{
+                backgroundImage: "radial-gradient(rgba(255,255,255,1) 1px, transparent 1px)",
+                backgroundSize: "40px 40px",
+              }}
+            />
+            <div className="absolute top-[62%] inset-x-0 h-px
+              bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
+          </div>
+
+          <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 pt-28 pb-24 sm:pt-36">
+            <div className="max-w-3xl">
+
+              <h1 className="font-bold leading-[0.92] tracking-[-0.045em] text-white mb-7">
+                <span className="block text-[clamp(3rem,9vw,6.5rem)]">Web</span>
+                <span className="block text-[clamp(3rem,9vw,6.5rem)]
+                  bg-gradient-to-r from-violet-300 via-fuchsia-200 to-sky-300
+                  bg-clip-text text-transparent pb-1">
+                  Developer.
+                </span>
+              </h1>
+
+              <p className="text-base sm:text-lg text-white/32 font-light leading-relaxed max-w-lg mb-10">
+                Building{" "}
+                <span className="text-white/58">open-source tools</span>
+                {" "}and{" "}
+                <span className="text-white/58">self-hosted applications</span>
+                {" "}with TypeScript, React and Node.js.
+              </p>
+
+              <div className="flex flex-wrap items-center gap-4">
+                <a
+                  href="#projects"
+                  className="group inline-flex items-center gap-2.5
+                    px-7 py-3.5 rounded-xl bg-white text-black text-sm font-semibold
+                    hover:bg-neutral-100 active:scale-[0.975]
+                    transition-all duration-200 shadow-xl shadow-white/10"
+                  aria-label="View featured projects"
+                >
+                  View Projects
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="w-[0.9em] h-[0.9em] transition-transform duration-200 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </a>
+                <a
+                  href="https://github.com/geovane2dd"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="inline-flex items-center gap-2.5
+                    px-7 py-3.5 rounded-xl
+                    bg-white/[0.05] hover:bg-white/[0.09]
+                    border border-white/[0.09] hover:border-white/[0.2]
+                    text-sm text-white/60 hover:text-white font-medium
+                    transition-all duration-200 active:scale-[0.975]"
+                  aria-label="Visit GitHub profile — @geovane2dd"
+                >
+                  <FontAwesomeIcon icon={faGithub} className="w-[1em] h-[1em]" aria-hidden="true" />
+                  @geovane2dd
+                </a>
+              </div>
             </div>
           </div>
 
-          <section 
-            className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32" 
-            id="projects"
-            aria-label="Featured Projects"
+          <div
+            className="absolute bottom-10 left-1/2 -translate-x-1/2
+              flex flex-col items-center select-none"
+            aria-hidden="true"
           >
-            <div className="max-w-7xl mx-auto">
-              <header className="mb-12 sm:mb-16 md:mb-20 text-center px-2">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3 sm:mb-4 text-white tracking-tight">
+            <div className="w-px h-12 bg-gradient-to-b from-white/15 to-transparent" />
+          </div>
+        </section>
+
+        {/* ═══════════════════════ PROJECTS ════════════════════ */}
+        <section
+          id="projects"
+          className="relative py-28 sm:py-36 scroll-mt-20"
+          aria-label="Featured Projects"
+        >
+          <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" aria-hidden="true" />
+          <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" aria-hidden="true" />
+
+          <div className="max-w-7xl mx-auto px-6 sm:px-10">
+
+            <header className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 sm:mb-20">
+              <div>
+                <p className="font-mono text-[11px] tracking-[0.3em] text-violet-400/60 uppercase mb-3">
+                  Work
+                </p>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight">
                   Featured Projects
                 </h2>
-                <div className="space-y-3 max-w-2xl mx-auto">
-                  <p className="text-gray-500 text-sm sm:text-base">
-                    Explore a curated collection of open-source projects and self-hosted solutions designed for privacy, security, and efficiency. Each project is built with modern web technologies and best practices.
-                  </p>
-                  <p className="text-gray-500 text-sm sm:text-base">
-                    Learn more about <a href="#about" className="text-gray-400 hover:text-white underline">my development approach</a>, or explore <a href="#projects" className="text-gray-400 hover:text-white underline">all featured projects</a> below.
-                  </p>
-                </div>
-              </header>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8" role="list">
-                {projects.map((project, index) => (
-                  <article 
-                    key={index} 
-                    className="group relative bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-5 sm:p-6 md:p-8 hover:border-[#2a2a2a] hover:bg-[#121212] transition-all duration-300"
-                    role="listitem"
-                  >
-                    <div className="flex items-start justify-between mb-4 sm:mb-6">
-                      <div className="text-gray-500 text-xl sm:text-2xl group-hover:text-gray-400 transition-colors duration-300" aria-hidden="true">
-                        <FontAwesomeIcon icon={project.icon} className="text-[20px] sm:text-[24px]" style={{width: '1em', height: '1em'}} />
-                      </div>
-                      <nav aria-label={`${project.title} links`}>
-                        <div className="flex gap-3">
-                          {project.demoEnabled && (
-                          <a 
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer" 
-                          className="text-gray-600 hover:text-white transition-colors duration-200 p-2.5 -m-2.5 rounded touch-manipulation"
-                          title="Open demo in new tab"
-                          aria-label={`Visit ${project.title} live demo website`}
-                          style={{minWidth: '44px', minHeight: '44px'}}
-                        >
-                          <FontAwesomeIcon icon={faExternalLinkAlt} className="text-base" style={{width: '1em', height: '1em'}} aria-hidden="true" />
-                        </a>
-                      )}
-                      <a 
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer" 
-                        className="text-gray-600 hover:text-white transition-colors duration-200 p-2.5 -m-2.5 rounded touch-manipulation"
-                        title="View source code on GitHub"
-                        aria-label={`View ${project.title} source code on GitHub`}
-                        style={{minWidth: '44px', minHeight: '44px'}}
-                      >
-                        <FontAwesomeIcon icon={faGithub} className="text-base" style={{width: '1em', height: '1em'}} aria-hidden="true" />
-                      </a>
+              </div>
+              <a
+                href="https://github.com/geovane2dd?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="group self-start sm:self-auto inline-flex items-center gap-2
+                  text-sm text-white/28 hover:text-white/60 font-medium transition-colors duration-200"
+                aria-label="View all repositories on GitHub"
+              >
+                All repositories
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="w-[0.85em] h-[0.85em] transition-transform duration-200 group-hover:translate-x-0.5"
+                  aria-hidden="true"
+                />
+              </a>
+            </header>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4" role="list">
+              {projects.map((p, i) => (
+                <article
+                  key={p.id}
+                  role="listitem"
+                  className={`group relative flex flex-col
+                    bg-[#0d0d1a] border border-white/[0.065] rounded-2xl
+                    hover:border-white/[0.13]
+                    hover:shadow-[0_8px_48px_-8px]
+                    ${p.glow}
+                    transition-all duration-300`}
+                >
+                  {/* Top shimmer */}
+                  <div
+                    className="absolute top-0 inset-x-0 h-px rounded-t-2xl
+                      bg-gradient-to-r from-transparent via-white/[0.12] to-transparent
+                      opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    aria-hidden="true"
+                  />
+
+                  <div className="flex flex-col flex-1 p-6 sm:p-8">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-center gap-3">
+                        <div className="flex items-center justify-center w-9 h-9 rounded-lg
+                          bg-white/[0.05] border border-white/[0.07] shrink-0">
+                          <FontAwesomeIcon icon={p.icon} className="text-white/40 w-[0.9em] h-[0.9em]" aria-hidden="true" />
                         </div>
-                      </nav>
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <span className={`w-1.5 h-1.5 rounded-full ${p.dot} shrink-0`} aria-hidden="true" />
+                            <span className="text-[11px] text-white/25 font-mono tracking-wider">{p.tagline}</span>
+                          </div>
+                          <h3 className="text-lg font-bold text-white/88 tracking-tight mt-0.5">
+                            <a
+                              href={p.demo ? p.link : p.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="hover:text-white transition-colors duration-150"
+                              aria-label={`${p.title} — ${p.tagline}`}
+                            >
+                              {p.title}
+                            </a>
+                          </h3>
+                        </div>
+                      </div>
+                      <span className="text-[11px] text-white/10 font-mono tabular-nums select-none mt-1" aria-hidden="true">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
                     </div>
 
-                    <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
-                      <h3 className="text-xl sm:text-2xl font-semibold text-white group-hover:text-gray-100 transition-colors duration-200">
-                        <a 
-                          href={project.demoEnabled ? project.link : project.github}
+                    <p className="text-sm text-white/33 leading-relaxed mb-6
+                      group-hover:text-white/46 transition-colors duration-200 flex-1">
+                      {p.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-1.5 mb-6" aria-label={`${p.title} technologies`}>
+                      {p.stack.map(t => (
+                        <span
+                          key={t}
+                          className="px-2.5 py-1 rounded-md
+                            bg-white/[0.04] border border-white/[0.055]
+                            text-[11px] text-white/26 font-mono tracking-wide"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <footer className="flex gap-2.5 pt-5 border-t border-white/[0.055]">
+                      {p.demo && (
+                        <a
+                          href={p.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="hover:underline"
-                          aria-label={`Learn more about ${project.title} project`}
+                          className="flex-1 inline-flex items-center justify-center gap-2
+                            py-2.5 px-4 rounded-xl bg-white text-black text-xs font-semibold
+                            hover:bg-neutral-100 active:scale-[0.975] transition-all duration-200"
+                          aria-label={`Live demo — ${p.title}`}
                         >
-                          {project.title}
-                        </a>
-                      </h3>
-                      <p className="text-gray-500 leading-relaxed text-xs sm:text-sm group-hover:text-gray-400 transition-colors duration-200">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    <footer className="flex gap-3 pt-4 border-t border-[#1a1a1a]">
-                      {project.demoEnabled && (
-                        <a 
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer" 
-                          className="flex-1 py-3 px-5 text-center rounded-lg bg-white text-black text-sm font-medium hover:bg-gray-100 transition-all duration-200 active:scale-[0.98] flex items-center justify-center gap-2 touch-manipulation"
-                          style={{minHeight: '44px'}}
-                          aria-label={`Visit ${project.title} live demo to try the application`}
-                        >
-                          <FontAwesomeIcon icon={faExternalLinkAlt} className="text-base" style={{width: '1em', height: '1em'}} aria-hidden="true" />
-                          <span>Visit Live Demo</span>
+                          <FontAwesomeIcon icon={faExternalLinkAlt} className="w-[0.85em] h-[0.85em]" aria-hidden="true" />
+                          Live Demo
                         </a>
                       )}
-                      <a 
-                        href={project.github}
+                      <a
+                        href={p.github}
                         target="_blank"
-                        rel="noopener noreferrer" 
-                        className={`${project.demoEnabled ? 'flex-1' : 'w-full'} py-3 px-5 text-center rounded-lg bg-[#1a1a1a] hover:bg-[#252525] text-white text-sm font-medium transition-all duration-200 border border-[#252525] hover:border-[#2a2a2a] active:scale-[0.98] flex items-center justify-center gap-2 touch-manipulation`}
-                        style={{minHeight: '44px'}}
-                        aria-label={`View ${project.title} source code and documentation on GitHub`}
+                        rel="noopener noreferrer"
+                        className={`${p.demo ? "flex-1" : "w-full"} inline-flex items-center justify-center gap-2
+                          py-2.5 px-4 rounded-xl
+                          bg-white/[0.05] hover:bg-white/[0.09]
+                          border border-white/[0.07] hover:border-white/[0.17]
+                          text-white/52 hover:text-white text-xs font-medium
+                          transition-all duration-200 active:scale-[0.975]`}
+                        aria-label={`Source code — ${p.title} on GitHub`}
                       >
-                        <FontAwesomeIcon icon={faGithub} className="text-base" style={{width: '1em', height: '1em'}} aria-hidden="true" />
-                        <span>View Source Code</span>
+                        <FontAwesomeIcon icon={faGithub} className="w-[0.9em] h-[0.9em]" aria-hidden="true" />
+                        Source Code
                       </a>
                     </footer>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          <div className="container mx-auto px-4 sm:px-6" aria-hidden="true">
-            <div className="max-w-6xl mx-auto">
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-[#1a1a1a] to-transparent"></div>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
-          <section 
-            id="about"
-            className="container mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32" 
-            aria-label="About GeovaneDD"
-          >
-            <div className="max-w-4xl mx-auto">
-              <header className="mb-12 sm:mb-16 text-center px-2">
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold mb-3 sm:mb-4 text-white tracking-tight">
-                  About
-                </h2>
-                <p className="text-gray-500 text-sm sm:text-base max-w-xl mx-auto">
-                  Learn about my development approach and the technologies I use
-                </p>
-              </header>
-              <div className="space-y-6 sm:space-y-8">
-                <article className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-5 sm:p-6 md:p-8">
-                  <h3 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-white">
-                    Development Philosophy
-                  </h3>
-                  <div className="space-y-4">
-                    <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                      I focus on creating open-source solutions and self-hosted applications that prioritize privacy, security, and user experience. Every project is built with modern web technologies, following best practices and clean code principles.
-                    </p>
-                    <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                      My work spans web development, API design, and full-stack applications, with a particular interest in tools that help users maintain control over their data and digital privacy. Each project is designed to be reliable, efficient, and easy to use.
-                    </p>
-                  </div>
-                </article>
+        </section>
 
-                <article className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-5 sm:p-6 md:p-8">
-                  <h3 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4 text-white">
-                    Technologies & Tools
-                  </h3>
-                  <div className="space-y-4">
-                    <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                      I work with a modern technology stack that includes TypeScript, React, Next.js, Node.js, and various other tools that enable fast, secure, and scalable web applications. All projects are built with TypeScript for type safety and better developer experience.
-                    </p>
-                    <p className="text-gray-400 leading-relaxed text-sm sm:text-base">
-                      My projects are open-source and available on <a href="https://github.com/geovane2dd" target="_blank" rel="noopener noreferrer nofollow" className="text-white hover:underline">GitHub</a>, where you can review the code, contribute, or use them as inspiration for your own projects. All code is well-documented and follows industry best practices.
-                    </p>
+        {/* ═══════════════════════ ABOUT ═══════════════════════ */}
+        <section
+          id="about"
+          className="relative py-28 sm:py-36 scroll-mt-20"
+          aria-label="About Geovanedd"
+        >
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+            <div className="absolute bottom-[-20%] right-[-5%] w-[50vw] h-[50vw] max-w-[700px] max-h-[700px]
+              rounded-full opacity-[0.04]
+              bg-[radial-gradient(ellipse,#a855f7,transparent_65%)]" />
+          </div>
+
+          <div className="max-w-7xl mx-auto px-6 sm:px-10">
+            <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+              {/* Left — text */}
+              <div>
+                <p className="font-mono text-[11px] tracking-[0.3em] text-cyan-400/55 uppercase mb-5">
+                  About
+                </p>
+                <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight mb-7 leading-tight">
+                  Building the open web,
+                  <br />
+                  <span className="text-white/28 font-light">one commit at a time.</span>
+                </h2>
+
+                <div className="space-y-5 text-sm sm:text-base text-white/35 leading-relaxed">
+                  <p>
+                    Developer from Brazil focused on crafting{" "}
+                    <span className="text-white/58">open-source tools</span>{" "}
+                    and{" "}
+                    <span className="text-white/58">self-hosted applications</span>{" "}
+                    that put users — not corporations — in control of their data.
+                  </p>
+                  <p>
+                    Every project is designed with performance, security and developer
+                    experience in mind.
+                  </p>
+                  <p>
+                    Interested in DevOps, privacy infrastructure and the intersection of
+                    security and usability in modern web apps.
+                  </p>
+                </div>
+
+                <a
+                  href="https://github.com/geovane2dd"
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="group inline-flex items-center gap-2.5 mt-8
+                    px-5 py-2.5 rounded-xl
+                    bg-white/[0.05] hover:bg-white/[0.09]
+                    border border-white/[0.08] hover:border-white/[0.18]
+                    text-sm text-white/52 hover:text-white font-medium
+                    transition-all duration-200 active:scale-[0.975]"
+                  aria-label="GitHub — @geovane2dd"
+                >
+                  <FontAwesomeIcon icon={faGithub} className="w-[1em] h-[1em]" aria-hidden="true" />
+                  @geovane2dd
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="w-[0.8em] h-[0.8em] transition-transform duration-200 group-hover:translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </a>
+              </div>
+
+              {/* Right — skills + GitHub card */}
+              <div>
+                <p className="text-[11px] text-white/16 tracking-[0.25em] uppercase font-mono mb-5">
+                  Technologies &amp; Tools
+                </p>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5" aria-label="Technology stack">
+                  {techGrid.map(({ label, sub }) => (
+                    <div
+                      key={label}
+                      className="group relative overflow-hidden flex flex-col gap-0.5
+                        p-4 rounded-xl
+                        bg-white/[0.025] border border-white/[0.05]
+                        hover:bg-white/[0.05] hover:border-white/[0.1]
+                        transition-all duration-200"
+                    >
+                      <div
+                        className="absolute top-0 left-0 right-0 h-px
+                          bg-gradient-to-r from-transparent via-white/[0.10] to-transparent
+                          opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                        aria-hidden="true"
+                      />
+                      <span className="text-sm font-semibold text-white/62
+                        group-hover:text-white/82 transition-colors duration-200">
+                        {label}
+                      </span>
+                      <span className="text-[11px] text-white/18 font-mono">{sub}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* GitHub card */}
+                <div className="mt-4 flex items-center gap-4 p-5 rounded-2xl
+                  bg-[#0d0d1a] border border-white/[0.065]">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-xl
+                    bg-white/[0.06] border border-white/[0.07] shrink-0">
+                    <FontAwesomeIcon icon={faGithub} className="text-white/48 w-[1em] h-[1em]" aria-hidden="true" />
                   </div>
-                </article>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-white/70">All projects on GitHub</p>
+                    <p className="text-xs text-white/28 font-mono mt-0.5">github.com/geovane2dd</p>
+                  </div>
+                  <a
+                    href="https://github.com/geovane2dd"
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="shrink-0 inline-flex items-center gap-1.5
+                      px-4 py-2 rounded-lg
+                      bg-white/[0.06] hover:bg-white/[0.11]
+                      border border-white/[0.08] hover:border-white/[0.18]
+                      text-xs text-white/52 hover:text-white font-medium
+                      transition-all duration-200 active:scale-[0.975]"
+                    aria-label="Open GitHub profile"
+                  >
+                    Open
+                    <FontAwesomeIcon icon={faArrowRight} className="w-[0.8em] h-[0.8em]" aria-hidden="true" />
+                  </a>
+                </div>
               </div>
             </div>
-          </section>
-        </main>
-        
-        <Footer />
-      </div>
-    </>
+          </div>
+        </section>
+
+      </main>
+      <Footer />
+    </div>
   );
 }
