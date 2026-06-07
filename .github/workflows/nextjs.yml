@@ -57,7 +57,6 @@ jobs:
           
           sudo netbird up \
             --setup-key ${{ secrets.NETBIRD_SETUP_KEY }} \
-            --disable-ssh-server \
             --wireguard-port 48000
           
           sleep 5
