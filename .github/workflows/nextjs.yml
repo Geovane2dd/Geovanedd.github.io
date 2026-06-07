@@ -51,6 +51,7 @@ jobs:
         uses: Alemiz112/netbird-connect@v1
         with:
           setup-key: ${{ secrets.NETBIRD_SETUP_KEY }}
+          args: "--wireguard-port 48000"
 
       - name: Execute Remote Deployment Script via SSH
         uses: appleboy/ssh-action@v1.0.3
