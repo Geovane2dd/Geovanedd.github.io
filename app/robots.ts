@@ -1,6 +1,6 @@
 /*
- * LinkPure - A modern tool to clean tracking parameters from links
- * Copyright (C) 2024 GeovaneDD
+ * Geovane2dd Portfolio — Developer documentation site
+ * Copyright (C) 2026 Geovane2dd
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,33 +15,32 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
-export const dynamic = 'force-static';
+export const dynamic    = "force-static";
 export const revalidate = 3600;
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://geovanedd.me';
+  const baseUrl = "https://geovanedd.me";
 
   return {
     rules: [
       {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/_next/'],
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/api/", "/_next/"],
       },
       {
-        userAgent: 'Googlebot',
-        allow: '/',
-        disallow: ['/api/', '/_next/'],
+        userAgent: "Googlebot",
+        allow: "/",
+        disallow: ["/api/", "/_next/"],
       },
       {
-        userAgent: 'Bingbot',
-        allow: '/',
-        disallow: ['/api/', '/_next/'],
+        userAgent: "Bingbot",
+        allow: "/",
+        disallow: ["/api/", "/_next/"],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
-

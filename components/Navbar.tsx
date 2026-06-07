@@ -1,12 +1,26 @@
 /*
- * GeovaneDD Portfolio · GNU GPL v3
+ * Geovane2dd Portfolio — Developer documentation site
+ * Copyright (C) 2026 Geovane2dd
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import MenuRounded  from "@mui/icons-material/MenuRounded";
+import CloseRounded from "@mui/icons-material/CloseRounded";
+import GitHubIcon   from "@mui/icons-material/GitHub";
 
 export default function Navbar() {
   const [open,     setOpen]     = useState(false);
@@ -14,20 +28,17 @@ export default function Navbar() {
   const menuRef = useRef<HTMLDivElement>(null);
   const btnRef  = useRef<HTMLButtonElement>(null);
 
-  /* scroll shadow */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* lock body scroll */
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  /* click outside */
   useEffect(() => {
     const handler = (e: MouseEvent | TouchEvent) => {
       const t = e.target as Node;
@@ -49,7 +60,6 @@ export default function Navbar() {
     };
   }, [open]);
 
-  /* close on desktop resize */
   useEffect(() => {
     const onResize = () => { if (window.innerWidth >= 768) setOpen(false); };
     window.addEventListener("resize", onResize);
@@ -62,7 +72,7 @@ export default function Navbar() {
       <nav
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500
           ${scrolled
-            ? "bg-[#080810]/90 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_1px_0_0_rgba(255,255,255,0.04)]"
+            ? "bg-[#080812]/92 backdrop-blur-2xl border-b border-white/[0.06] shadow-[0_1px_0_0_rgba(255,255,255,0.03)]"
             : "bg-transparent"}`}
         aria-label="Main navigation"
       >
@@ -74,16 +84,16 @@ export default function Navbar() {
               href="/"
               className="group flex items-center gap-2.5"
               onClick={() => setOpen(false)}
-              aria-label="Geovanedd — home"
+              aria-label="Geovane2dd — home"
             >
               <span className="flex items-center justify-center w-8 h-8 rounded-lg
                 bg-gradient-to-br from-violet-500 to-fuchsia-600 text-white text-xs font-bold
                 shadow-lg shadow-violet-500/25 select-none">
                 G
               </span>
-              <span className="text-sm font-semibold text-white/85 tracking-wide
-                group-hover:text-white transition-colors duration-200">
-                Geovanedd
+              <span className="text-sm font-semibold text-white/82
+                group-hover:text-white transition-colors duration-200 tracking-wide">
+                Geovane2dd
               </span>
             </Link>
 
@@ -93,7 +103,7 @@ export default function Navbar() {
                 <a
                   key={label}
                   href={`#${label.toLowerCase()}`}
-                  className="px-4 py-2 text-sm text-white/45 hover:text-white
+                  className="px-4 py-2 text-sm text-white/42 hover:text-white
                     rounded-lg hover:bg-white/[0.05] transition-all duration-200 font-medium"
                   aria-label={`Go to ${label} section`}
                 >
@@ -108,13 +118,14 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 className="flex items-center gap-2 px-4 py-2 text-sm font-medium
+                  text-white/55 hover:text-white
                   bg-white/[0.06] hover:bg-white/[0.10]
-                  border border-white/[0.08] hover:border-white/[0.18]
+                  border border-white/[0.08] hover:border-white/[0.17]
                   rounded-lg transition-all duration-200 active:scale-[0.97]"
                 style={{ minHeight: "40px" }}
                 aria-label="Visit GitHub profile"
               >
-                <FontAwesomeIcon icon={faGithub} className="w-[1em] h-[1em]" />
+                <span className="text-[1em]"><GitHubIcon /></span>
                 <span className="hidden lg:inline">GitHub</span>
                 <span className="lg:hidden">Git</span>
               </a>
@@ -127,15 +138,12 @@ export default function Navbar() {
               className="md:hidden flex items-center justify-center rounded-lg
                 bg-white/[0.06] hover:bg-white/[0.10]
                 border border-white/[0.08] transition-all duration-200
-                touch-manipulation"
+                touch-manipulation text-white/60 hover:text-white text-[1.25rem]"
               style={{ minWidth: "44px", minHeight: "44px" }}
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
             >
-              <FontAwesomeIcon
-                icon={open ? faTimes : faBars}
-                className="text-white/65 w-[1em] h-[1em] transition-transform duration-200"
-              />
+              {open ? <CloseRounded /> : <MenuRounded />}
             </button>
           </div>
         </div>
@@ -144,7 +152,7 @@ export default function Navbar() {
       {/* ── Mobile backdrop ─────────────────────────────────── */}
       {open && (
         <div
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-40 bg-black/55 backdrop-blur-sm md:hidden"
           onClick={() => setOpen(false)}
           aria-hidden="true"
         />
@@ -169,7 +177,7 @@ export default function Navbar() {
               key={label}
               href={`#${label.toLowerCase()}`}
               className="flex items-center gap-3 px-4 py-3.5 text-sm font-medium
-                text-white/65 hover:text-white hover:bg-white/[0.06]
+                text-white/62 hover:text-white hover:bg-white/[0.05]
                 rounded-xl transition-all duration-200 touch-manipulation"
               style={{ minHeight: "48px" }}
               onClick={() => setOpen(false)}
@@ -182,12 +190,12 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer nofollow"
             className="flex items-center gap-3 px-4 py-3.5 text-sm font-medium
-              text-white/65 hover:text-white hover:bg-white/[0.06]
+              text-white/62 hover:text-white hover:bg-white/[0.05]
               rounded-xl transition-all duration-200 touch-manipulation"
             style={{ minHeight: "48px" }}
             onClick={() => setOpen(false)}
           >
-            <FontAwesomeIcon icon={faGithub} className="w-[1em] h-[1em]" />
+            <span className="text-[1.1em]"><GitHubIcon /></span>
             GitHub
           </a>
         </div>

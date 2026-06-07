@@ -1,6 +1,6 @@
 /*
- * LinkPure - A modern tool to clean tracking parameters from links
- * Copyright (C) 2024 GeovaneDD
+ * Geovane2dd Portfolio — Developer documentation site
+ * Copyright (C) 2026 Geovane2dd
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -15,22 +15,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-import { MetadataRoute } from 'next';
+import { MetadataRoute } from "next";
 
-export const dynamic = 'force-static';
-export const revalidate = 3600; 
+export const dynamic    = "force-static";
+export const revalidate = 3600;
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://geovanedd.me';
-  const currentDate = new Date();
+  const baseUrl = "https://geovanedd.me";
 
   return [
     {
       url: baseUrl,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
+      lastModified: new Date(),
+      changeFrequency: "weekly",
       priority: 1,
     },
   ];
 }
-

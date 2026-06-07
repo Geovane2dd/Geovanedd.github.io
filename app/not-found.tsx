@@ -1,6 +1,6 @@
 /*
- * LinkPure - A modern tool to clean tracking parameters from links
- * Copyright (C) 2024 GeovaneDD
+ * Geovane2dd Portfolio — Developer documentation site
+ * Copyright (C) 2026 Geovane2dd
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,38 +18,42 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import HomeRounded from "@mui/icons-material/HomeRounded";
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#0a0a0a] text-[#e5e5e5]">
+    <div className="min-h-screen flex flex-col bg-[#07070f]">
       <Navbar />
-      
+
       <main className="flex-grow pt-16">
-        <section className="container mx-auto px-6 py-40">
-          <div className="text-center space-y-8 max-w-2xl mx-auto animate-fadeIn">
-            <div className="space-y-6">
-              <h1 className="text-7xl md:text-8xl font-semibold text-white tracking-tight">
+        <section className="max-w-7xl mx-auto px-6 py-40">
+          <div className="text-center space-y-8 max-w-lg mx-auto">
+            <div className="space-y-5">
+              <p className="font-mono text-[10px] tracking-[0.35em] text-white/20 uppercase">
+                Error · 404
+              </p>
+              <h1 className="text-8xl font-bold text-white tracking-tight">
                 404
               </h1>
-              <div className="w-16 h-px bg-[#2a2a2a] mx-auto"></div>
+              <div className="w-12 h-px bg-white/10 mx-auto" aria-hidden="true" />
             </div>
-            <div className="space-y-4">
-              <p className="text-2xl md:text-3xl text-white font-semibold">
+            <div className="space-y-3">
+              <p className="text-xl font-semibold text-white/85">
                 Page not found
               </p>
-              <p className="text-base md:text-lg text-gray-500 leading-relaxed">
-                Sorry, but the page you're looking for doesn't exist or has been moved.
+              <p className="text-sm text-white/38 leading-relaxed">
+                The page you&apos;re looking for doesn&apos;t exist or has been moved.
               </p>
             </div>
-            <div className="flex justify-center pt-6">
-              <Link 
+            <div className="flex justify-center pt-4">
+              <Link
                 href="/"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-white text-black rounded-lg font-medium hover:bg-gray-100 transition-all duration-200 active:scale-[0.98]"
+                className="group inline-flex items-center gap-2 px-7 py-3.5
+                  bg-white text-black rounded-xl text-sm font-semibold
+                  hover:bg-neutral-100 transition-all duration-200 active:scale-[0.975]"
               >
-                <FontAwesomeIcon icon={faHome} className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
-                <span>Back to home</span>
+                <span className="text-[1em]"><HomeRounded /></span>
+                Back to home
               </Link>
             </div>
           </div>

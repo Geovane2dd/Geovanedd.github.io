@@ -1,74 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   html {
-    background-color: #0a0a0a;
-    color: #e5e5e5;
+    background-color: #07070f;
+    color: #e2e2f0;
   }
 
   body {
-    @apply bg-[#0a0a0a] text-[#e5e5e5] font-sans antialiased;
+    @apply bg-[#07070f] text-[#e2e2f0] font-sans antialiased;
     margin: 0;
     padding: 0;
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  * {
-    @apply border-[#1a1a1a];
   }
 
   html, body {
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  main {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  nav {
-    opacity: 1;
-    visibility: visible;
-  }
 }
 
 @layer components {
-  .mobile-link {
-    @apply block w-full transition-all duration-200;
-  }
-
   .no-scroll {
     @apply overflow-hidden;
-  }
-}
-
-@layer components {
-  .btn-primary {
-    @apply px-6 py-2.5 bg-white text-black rounded-lg transition-all duration-200 font-medium hover:bg-gray-100 active:scale-[0.98];
-  }
-
-  .btn-secondary {
-    @apply px-6 py-2.5 bg-[#1a1a1a] hover:bg-[#252525] rounded-lg transition-all duration-200 text-white font-medium border border-[#2a2a2a];
-  }
-
-  .mobile-link {
-    @apply block w-full transition-all duration-200;
-  }
-
-  .no-scroll {
-    @apply overflow-hidden;
-  }
-
-  .social-button {
-    @apply flex items-center px-5 py-2.5 rounded-lg bg-[#1a1a1a] hover:bg-[#252525] transition-all duration-200 text-gray-200 border border-[#2a2a2a];
-  }
-
-  .project-card {
-    @apply transition-all duration-300 hover:border-[#3a3a3a];
   }
 }
 
@@ -76,76 +28,29 @@ html {
   scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #1a1a1a;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #2a2a2a;
-}
-
-svg.svg-inline--fa {
-  display: inline-block;
+/* MUI SvgIcon size normalisation — controls via font-size on parent */
+.MuiSvgIcon-root {
+  font-size: inherit;
   width: 1em;
   height: 1em;
-  font-size: inherit;
   vertical-align: -0.125em;
-}
-
-.fa-icon-static {
-  width: 1em !important;
-  height: 1em !important;
-  display: inline-block !important;
-}
-
-button {
   display: inline-block;
-  box-sizing: border-box;
-  min-height: 44px;
+  fill: currentColor;
+  flex-shrink: 0;
 }
 
-button[type="submit"],
-button[type="button"],
-button:not([type]) {
-  font-size: 1rem;
-  line-height: 1.5;
+::-webkit-scrollbar {
+  width: 6px;
 }
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+::-webkit-scrollbar-track {
+  background: #07070f;
 }
-
-.btn-static {
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+::-webkit-scrollbar-thumb {
+  background: #1c1c2e;
+  border-radius: 3px;
 }
-
-a.inline-flex[class*="bg-"],
-a[class*="rounded-lg"][class*="bg-"] {
-  display: inline-flex;
-  align-items: center;
-  box-sizing: border-box;
-  min-height: 40px;
-}
-
-button, 
-a[class*="rounded-lg"][class*="bg-"],
-a.inline-flex[class*="rounded"] {
-  box-sizing: border-box;
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2a40;
 }
 
 @media (max-width: 767px) {
@@ -154,30 +59,16 @@ a.inline-flex[class*="rounded"] {
     position: fixed;
     width: 100%;
   }
-
   nav button,
   nav a {
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
-
-  nav [role="dialog"] {
-    will-change: transform, opacity;
-    transform-origin: top;
-  }
-}
-
-nav + div[aria-hidden="true"] {
-  transition: opacity 0.3s ease-out;
-}
-
-nav a,
-nav button {
-  outline-offset: 2px;
 }
 
 nav a:focus-visible,
 nav button:focus-visible {
-  outline: 2px solid #ffffff;
+  outline: 2px solid rgba(255, 255, 255, 0.7);
   outline-offset: 2px;
+  border-radius: 6px;
 }
