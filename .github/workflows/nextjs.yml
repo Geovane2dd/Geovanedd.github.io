@@ -9,6 +9,7 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: geovane2dd/geovanedd.github.io
   CONTAINER_NAME: geovanedd-site
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
 
 jobs:
   build-and-push:
@@ -33,7 +34,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and Push Production Image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v7
         with:
           context: .
           push: true
@@ -47,23 +48,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Conexão nativa e robusta ao NetBird para evitar o erro de DeadlineExceeded
       - name: Install and Connect to NetBird Network
         run: |
           curl -fsSL https://pkgs.netbird.io/install.sh | sh
-          
           sudo netbird service start
           sleep 5
-          
           sudo netbird up \
             --setup-key ${{ secrets.NETBIRD_SETUP_KEY }} \
             --wireguard-port 48000
-          
           sleep 5
           sudo netbird status
 
       - name: Execute Remote Deployment Script via SSH
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -71,22 +68,15 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             set -e
-
             IMAGE_TARGET=$(echo "${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest" | tr '[:upper:]' '[:lower:]')
-
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ${{ env.REGISTRY }} -u ${{ github.actor }} --password-stdin
-
             docker pull $IMAGE_TARGET
-
             docker stop ${{ env.CONTAINER_NAME }} 2>/dev/null || true
             docker rm ${{ env.CONTAINER_NAME }} 2>/dev/null || true
-
             docker run -d \
               --name ${{ env.CONTAINER_NAME }} \
               --restart always \
               -p 3000:3000 \
               $IMAGE_TARGET
-
             docker image prune -f
-            
             echo "Deployment concluído"
