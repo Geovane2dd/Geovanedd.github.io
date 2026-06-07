@@ -47,11 +47,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Connect to NetBird Overlay Network
-        uses: Alemiz112/netbird-connect@v1
-        with:
-          setup-key: ${{ secrets.NETBIRD_SETUP_KEY }}
-          args: "--wireguard-port 48000"
+      # Conexão nativa e robusta ao NetBird para evitar o erro de DeadlineExceeded
+      - name: Install and Connect to NetBird Network
+        run: |
+          curl -fsSL https://pkgs.netbird.io/install.sh | sh
+          
+          sudo netbird service start
+          sleep 5
+          
+          sudo netbird up \
+            --setup-key ${{ secrets.NETBIRD_SETUP_KEY }} \
+            --disable-ssh-server \
+            --wireguard-port 48000
+          
+          sleep 5
+          sudo netbird status
 
       - name: Execute Remote Deployment Script via SSH
         uses: appleboy/ssh-action@v1.0.3
